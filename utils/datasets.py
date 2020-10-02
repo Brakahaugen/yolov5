@@ -363,12 +363,16 @@ class LoadImagesAndLabels(Dataset):  # for training/testing
         self.stride = stride
 
         # Define labels
-        sa, sb = os.sep + 'images' + os.sep, os.sep + 'labels' + os.sep  # /images/, /labels/ substrings
+        # labels are not labels but annotations
+        sa, sb = os.sep + 'images' + os.sep, os.sep + 'annotations' + os.sep  # /images/, /labels/ substrings
         self.label_files = [x.replace(sa, sb, 1).replace(os.path.splitext(x)[-1], '.txt') for x in self.img_files]
 
         # Check cache
         cache_path = str(Path(self.label_files[0]).parent) + '.cache'  # cached labels
+
+        print(f"{cache_path = } my man\n\n")
         if os.path.isfile(cache_path):
+            print("through")
             cache = torch.load(cache_path)  # load
             if cache['hash'] != get_hash(self.label_files + self.img_files):  # dataset changed
                 cache = self.cache_labels(cache_path)  # re-cache
