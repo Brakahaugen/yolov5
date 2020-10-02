@@ -1,0 +1,25 @@
+# COCO 2017 dataset http://cocodataset.org
+# Train command: python train.py --data coco.yaml
+# Default dataset location is next to /yolov5:
+#   /parent_folder
+#     /coco
+#     /yolov5
+
+
+# download command/URL (optional)
+# download: bash data/scripts/get_coco.sh
+
+# train and val data as 1) directory: path/images/, 2) file: path/images.txt, or 3) list: [path1/images/, path2/images/]
+train: [../train/India/images/, ../train/Japan/images/]  # 118287 images
+val: [../test1/Czech/images/] #, ../test1/India/images/, ../test1/Japan/images/]  # 118287 images
+test: [../test2/Czech/images/, ../test2/India/images/, ../test2/Japan/images/]  # 118287 images
+
+# train: [../test1/Czech/images//]  # 118287 images
+# val: [../test1/Czech/images/]  # 118287 images
+# test: [../test1/Czech/images/]  # 118287 images
+
+# number of classes
+nc: 4
+
+# class names
+names: ['D00', 'D10', 'D20', 'D40']
